@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                 }else {
                     loader.setMessage("Login in progress");
                     loader.setCanceledOnTouchOutside(false);
-                    Task<AuthResult> task = mAuth.signInWithEmailAndPassword(email, password)
+                    Task<AuthResult> task = mAuth.signInWithEmailAndPassword(email, password);
                     task.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
