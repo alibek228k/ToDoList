@@ -256,23 +256,20 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                reference.child(key).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(HomeActivity.this, "Task deleted successfully", Toast.LENGTH_SHORT).show();
-                        }else {
-                            String err = task.getException().toString();
-                            Toast.makeText(HomeActivity.this, "Failed to delete task" + err, Toast.LENGTH_SHORT).show();
-                        }
+        deleteButton.setOnClickListener(view1 -> {
+            reference.child(key).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()){
+                        Toast.makeText(HomeActivity.this, "Task deleted successfully", Toast.LENGTH_SHORT).show();
+                    }else {
+                        String err = task.getException().toString();
+                        Toast.makeText(HomeActivity.this, "Failed to delete task" + err, Toast.LENGTH_SHORT).show();
                     }
-                });
+                }
+            });
 
-                dialog.dismiss();
-            }
+            dialog.dismiss();
         });
 
         dialog.show();
